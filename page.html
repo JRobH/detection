@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Testing</title>
+  <script>
+  (function() {
+    document.head.removeChild(document.getElementsByTagName("script")[0]);
+    (function detectPropMods() {
+      if (!window.game) {
+        return setTimeout(detectPropMods, 100);
+      }
+      Object.getOwnPropertyNames(game).forEach(function(prop) {
+        if (prop !== "prop") {
+          console.error("extra property added!");
+        }
+      });
+      setTimeout(detectPropMods, 100);
+    })();
+  })();
+  </script>
+</head>
+<body style="background-color: #C8C8C8;">
+  <script src="game.js"></script>
+</body>
+</html>
